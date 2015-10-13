@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shaunwarman/shinyjs/issues"
   },
-  "homepage": "https://github.com/shaunwarman/shinyjs#readme"
+  "homepage": "https://github.com/shaunwarman/shinyjs#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
