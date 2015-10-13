@@ -1,0 +1,19 @@
+{
+  "name": "shinyjs",
+  "version": "1.0.0",
+  "description": "A simple, lightweight web app framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaunwarman/shinyjs.git"
+  },
+  "author": "Shaun Warman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaunwarman/shinyjs/issues"
+  },
+  "homepage": "https://github.com/shaunwarman/shinyjs#readme"
+}
