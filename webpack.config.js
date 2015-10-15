@@ -1,6 +1,8 @@
 module.exports = {
     entry: {
-        javascript: __dirname + "/public/js/index.jsx",
+        javascript: [__dirname + "/public/js/index.jsx",
+                    __dirname + "/server/components/HomePage.jsx"
+        ],
         html: __dirname + "/public/index.html"
     },
     output: {
