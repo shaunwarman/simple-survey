@@ -1,9 +1,9 @@
 module.exports = {
     entry: {
-        javascript: [__dirname + "/public/js/index.jsx",
+        javascript: [__dirname + "/client/js/index.jsx",
                     __dirname + "/server/components/HomePage.jsx"
         ],
-        html: __dirname + "/public/index.html"
+        html: __dirname + "/client/index.html"
     },
     output: {
         filename: "app.js",
