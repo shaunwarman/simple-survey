@@ -1,14 +1,14 @@
 var express = require('express');
 var app = express();
 
-app.set('views', __dirname + '/client/templates');
-app.set('view engine', 'jade');
+var routes = require('./server/controllers');
+
+app.set('views', __dirname + '/server/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 app.use(express.static(__dirname + '/build'));
-
-app.get('/home', function (req, res) {
-    res.render('index');    
-});
+app.use('/', routes);
 
 console.log("Listening on port: 3000");
 app.listen(process.env.PORT || 3000);
