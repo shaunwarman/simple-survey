@@ -1,7 +1,6 @@
 module.exports = {
     entry: {
-        javascript: [__dirname + "/client/js/index.jsx"
-        ]
+        javascript: [__dirname + "/client/js/index.jsx"]
     },
     output: {
         filename: "app.js",
