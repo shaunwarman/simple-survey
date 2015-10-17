@@ -18,8 +18,9 @@
   "homepage": "https://github.com/shaunwarman/shinyjs#readme",
   "dependencies": {
     "express": "^4.13.3",
+    "jade": "^1.11.0",
     "path": "^0.12.7",
-    "react": "^0.14.0",
+    "react": "^0.14",
     "react-dom": "^0.14.0"
   },
   "devDependencies": {
