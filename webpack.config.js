@@ -2,6 +2,10 @@ module.exports = {
     entry: {
         javascript: [__dirname + "/client/js/index.jsx"]
     },
+    externals: {
+        "jquery": "jQuery",
+        "materialize": "materialize"
+    },
     output: {
         filename: "app.js",
         path: __dirname + "/build"
