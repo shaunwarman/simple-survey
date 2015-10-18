@@ -10,12 +10,17 @@ var Master = React.createClass({
     render: function() {
         return (
             <html>
-                <head><title>Test title</title></head>
+                <head>
+                    <title>Test title</title>
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+                    <link rel="stylesheet" type="text/css" href="app.css" />
+                </head>
                 <body>
+                <div className="container">
                     <div id="content"></div>
+                </div>
                 </body>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
                 <script src="app.js"></script>
             </html>
         );
