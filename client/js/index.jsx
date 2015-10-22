@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var HelloWorld = require('./helloWorld');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import HelloWorld from './helloWorld';
 
-ReactDOM.render(<HelloWorld />, document.getElementById('content'))
+ReactDOM.render(<HelloWorld />, document.getElementById('content'));

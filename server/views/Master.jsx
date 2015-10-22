@@ -1,12 +1,10 @@
 'use strict';
 
-var React = require('react');
+import React from 'react';
 
-var Master = React.createClass({
+export default class Master extends React.Component {
     
-    onComponentDiDMount: function () {},
-    
-    render: function() {
+    render() {
         return (
             <html>
                 <head>
@@ -24,6 +22,4 @@ var Master = React.createClass({
             </html>
         );
     }
-});
-
-module.exports = Master;
+};
