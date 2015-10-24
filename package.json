@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/shaunwarman/shinyjs#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
+    "connect-multiparty": "^2.0.0",
     "couchbase": "^2.1.2",
     "express": "^4.13.3",
     "express-react-views": "^0.9.0",
