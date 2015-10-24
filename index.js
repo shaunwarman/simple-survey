@@ -1,3 +1,9 @@
+'use strict';
+
+var couchbase = require('couchbase');
+var cluster = new couchbase.Cluster('couchbase://127.0.0.1');
+var bucket = cluster.openBucket('NODE_DEV');
+
 var express = require('express');
 var app = express();
 
