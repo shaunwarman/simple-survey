@@ -1,19 +1,29 @@
-'use strict';
+"use strict";
 
-var React = require('react');
+var React = require("react");
 
- var HelloWorld = React.createClass({
+var Login = React.createClass({
     
     getInitialState: function () {
         return {
-            username: '',
-            password: '',
+            username: "",
+            password: "",
+            isAdmin: false,
             response: null
         }
     },
     
     changeUsername: function (event) {
-        this.setState({ username: event.target.value });
+        var username = event.target.value.toLowerCase();
+        
+        if (username === "admin") {
+            this.setState({
+                username: event.target.value,
+                isAdmin: true
+            });
+        } else {
+            this.setState({ username: event.target.value });
+        }
     },
     
     changePassword: function (event) {
@@ -24,8 +34,8 @@ var React = require('react');
         event.preventDefault();
         
         var formData = new FormData();
-        formData.append('username', this.state.username);
-        formData.append('password', this.state.password);
+        formData.append("username", this.state.username);
+        formData.append("password", this.state.password);
         
 
         $.ajax({
@@ -42,22 +52,28 @@ var React = require('react');
     },
     
     render: function () {
+        var password = null;
+        if (this.state.isAdmin) {
+            password = (<div className="form-group col-xs-4">
+                            <label for="password">Password</label>
+                            <input type="password" className="form-control" id="password" placeholder="Password"
+                                value={this.state.password} onChange={this.changePassword} />
+                        </div>
+                        );
+        }
+        
         return (
             <form id="user-form">
-                <div className="form-group">
+                <div className="form-group col-xs-4">
                     <label for="email">Email address</label>
                     <input type="email" className="form-control" id="email" placeholder="Email" 
                            value={this.state.username} onChange={this.changeUsername} />
                 </div>
-                <div className="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" className="form-control" id="password" placeholder="Password" 
-                           value={this.state.password} onChange={this.changePassword} />
-                </div>
+                {password}
                 <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
             </form>
         );
     }
 });
 
-module.exports = HelloWorld;
+module.exports = Login;

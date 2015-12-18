@@ -2,6 +2,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HelloWorld from './HelloWorld';
+import Login from './Login';
 
-ReactDOM.render(<HelloWorld />, document.getElementById('content'));
+ReactDOM.render(<Login />, document.getElementById('content'));
