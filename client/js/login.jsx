@@ -53,8 +53,9 @@ var Login = React.createClass({
     
     render: function () {
         var password = null;
+        
         if (this.state.isAdmin) {
-            password = (<div className="form-group col-xs-4">
+            password = (<div className="form-group">
                             <label for="password">Password</label>
                             <input type="password" className="form-control" id="password" placeholder="Password"
                                 value={this.state.password} onChange={this.changePassword} />
@@ -64,7 +65,7 @@ var Login = React.createClass({
         
         return (
             <form id="user-form">
-                <div className="form-group col-xs-4">
+                <div className="form-group">
                     <label for="email">Email address</label>
                     <input type="email" className="form-control" id="email" placeholder="Email" 
                            value={this.state.username} onChange={this.changeUsername} />

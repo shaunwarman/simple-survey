@@ -1,0 +1,12 @@
+{
+  "admin": {
+    "username": "admin",
+    "password": "pass"
+  },
+  "mysql": {
+    "host": "localhost",
+    "username": "root",
+    "password": "password",
+    "database": "survey"
+  }
+}
