@@ -27,6 +27,15 @@
 }
 
 #content {
-    width: 400px;
+    width: 350px;
     margin: 100px auto;
+}
+
+.admin-btn {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.option {
+    margin-top: 20px;
 }
