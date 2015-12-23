@@ -12,9 +12,9 @@ module.exports = function(sequelize, DataTypes) {
             field: 'question_id',
             type: DataTypes.UUID
         },
-        text: {
+        option: {
             allowNull: false,
-            field: 'text',
+            field: 'option',
             type: DataTypes.STRING
         },
         count: {

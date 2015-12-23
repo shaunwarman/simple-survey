@@ -6,7 +6,7 @@ export default class Master extends React.Component {
         return (
             <html>
                 <head>
-                    <title>Test title</title>
+                    <title>Title</title>
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
                     <link rel="stylesheet" type="text/css" href="app.css" />
                 </head>

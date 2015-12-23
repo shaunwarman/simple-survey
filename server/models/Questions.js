@@ -7,10 +7,10 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             type: DataTypes.UUID
         },
-        text: {
-            field: 'text',
+        question: {
+            allowNull: false,
+            field: 'question',
             type: DataTypes.STRING,
-            allowNull: false
         }
     }, {
         freezeTableName: true, // table name same as model name

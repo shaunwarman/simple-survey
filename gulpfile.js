@@ -22,6 +22,7 @@ gulp.task('clean', function() {
 gulp.task("webpack", function(callback) {
     
     webpack({
+        devtool: "source-map",
         entry: {
             javascript: [__dirname + "/client/js/index.jsx"]
         },

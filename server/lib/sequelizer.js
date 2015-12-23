@@ -1,10 +1,10 @@
-var config = require('../../config.json');
+var mysql = require('../../config.json').mysql;
 var Sequelize = require('sequelize');
 
 var sequelizer = {};
 
-var sequelize = new Sequelize(config.mysql.database, config.mysql.username, config.mysql.password, {
-    host: config.mysql.host,
+var sequelize = new Sequelize(mysql.database, mysql.username, mysql.password, {
+    host: mysql.host,
     dialect: 'mysql'
 });
 

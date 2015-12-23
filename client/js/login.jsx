@@ -22,7 +22,10 @@ var Login = React.createClass({
                 isAdmin: true
             });
         } else {
-            this.setState({ username: event.target.value });
+            this.setState({ 
+                username: event.target.value,
+                isAdmin: false
+            });
         }
     },
     
@@ -44,9 +47,12 @@ var Login = React.createClass({
             data: formData,
             contentType: false,
             processData: false,
-            timeout: 5000,
+            timeout: 20000,
             complete: function (response) {
-                this.setState({ response: response });
+                if (response.responseJSON && response.responseJSON.redirect) {
+                    var url = response.responseJSON.redirect;
+                    window.location = url;
+                }
             }
         });
     },
