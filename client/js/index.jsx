@@ -8,6 +8,7 @@ import Admin from './admin';
 import AddQuestion from './addQuestion';
 import Login from './login';
 import Questions from './questions';
+import Vote from './vote';
 import Unauthorized from './unauthorized';
 
 render(
@@ -17,6 +18,7 @@ render(
         <Route path="/question/add" component={AddQuestion} />
         <Route path="/question/view" component={Questions} />
         <Route path="/question/viewall" component={Questions} />
+        <Route path="/vote" component={Vote} />
         <Route path="/unauthorized" component={Unauthorized} />
     </Router>, document.getElementById('content')
 );

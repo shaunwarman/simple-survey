@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require("react");
+var $ = require("./external/jquery.min");
 
 var Login = React.createClass({
     
@@ -72,8 +73,8 @@ var Login = React.createClass({
         return (
             <form id="user-form">
                 <div className="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" className="form-control" id="email" placeholder="Email" 
+                    <label for="username">Username</label>
+                    <input type="username" className="form-control" id="username" placeholder="Username" 
                            value={this.state.username} onChange={this.changeUsername} />
                 </div>
                 {password}

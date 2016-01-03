@@ -13,25 +13,25 @@ var AddQuestion = React.createClass({
             options: []
         }
     },
-    
+
     handleOption: function (choice, content) {
         var options = this.state.options;
         options[choice-1] = content;
-        
+
         this.setState({ options: options });
     },
-    
+
     handleQuestion: function (question) {
         this.setState({
-           question: question
+            question: question
         });
     },
-    
+
     handleSubmit: function (event) {
         event.preventDefault();
 
         var formData = new FormData();
-        formData.append("question", this.state.question);
+        formData.append("question", this.state.username);
         formData.append("options", this.state.options);
 
         $.ajax({
@@ -45,7 +45,7 @@ var AddQuestion = React.createClass({
                 if (response && response.responseJSON) {
                     var message = response.responseJSON.message;
                     var success = response.responseJSON.success;
-                    
+
                     window.location = "/admin?success=" + success + "&message=" + message;
                 }
             }

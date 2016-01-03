@@ -6,7 +6,8 @@ var del = require('del');
 
 
 var paths = {
-    css: 'client/css/*.css'
+    css: ['client/css/bootstrap.min.css',
+          'client/css/app.css']
 };
 
 /**
@@ -24,10 +25,7 @@ gulp.task("webpack", function(callback) {
     webpack({
         devtool: "source-map",
         entry: {
-            javascript: [__dirname + "/client/js/index.jsx"]
-        },
-        externals: {
-            "jquery": "jQuery"
+            javascript: [__dirname + "/client/js/"]
         },
         output: {
             filename: "app.js",

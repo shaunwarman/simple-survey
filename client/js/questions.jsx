@@ -1,53 +1,77 @@
 "use strict";
 
 var React = require("react");
+var Question = require("./question");
+var Option = require("./option");
+var $ = require("./external/jquery.min");
 
-var Questions = React.createClass({
+var AddQuestion = React.createClass({
 
     getInitialState: function () {
         return {
-            number: 0,
-            questions: []
+            question: null,
+            options: []
         }
     },
+    
+    componentDidMount: function () {
+        this.handleOptions(window._options || []);
+    },
 
-    addQuestion: function (question) {
-        var number = this.state.number++;
-        var questions = this.state.questions.push(question);
-        
-        this.setState({
-            number: number,
-            questions: question
+    handleOption: function (choice, content) {
+        var options = this.state.options;
+        options[choice-1] = content;
+
+        this.setState({ options: options });
+    },
+
+    handleSubmit: function (event) {
+        event.preventDefault();
+
+        var formData = new FormData();
+        formData.append("question", this.state.username);
+        formData.append("options", this.state.options);
+
+        $.ajax({
+            type: "POST",
+            url: "/vote",
+            data: formData,
+            contentType: false,
+            processData: false,
+            timeout: 20000,
+            complete: function (response) {
+                if (response && response.responseJSON) {
+                    window.location = "/congrats";
+                }
+            }
         });
     },
-    
-    removeQuestion: function (question) {
-        var number = this.state.number--;
-        var questions = this.state.questions;
-        
-        questions.findIndex(function (element, index) {
-            
-        });
 
+    handleOptions: function (options) {
+        var optionsArray = [];
+        
+        options.forEach(function (element) {
+            var option = '<div>' + element['option'] + '</div>';
+            optionsArray.push(option)
+        });
+        
         this.setState({
-            number: number,
-            questions: question
+            options: optionsArray
         });
     },
 
     render: function () {
-
+        var question = window._question || "";
+        var options = this.state.options || "";
+        
         return (
-            <form id="admin-form">
-                <div className="form-group">
-                    <label for="question">Question</label>
-                    <input type="text" className="form-control" id="question" placeholder="Question"
-                           value={this.state.username} onChange={this.changeUsername} />
-                </div>
-                <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
-            </form>
+            <div>
+                {question};
+                {options}
+                <button type="submit" className="btn btn-primary option" onClick={this.handleSubmit}>Submit</button>
+            </div>
         );
     }
 });
 
-module.exports = Questions;
+module.exports = AddQuestion;

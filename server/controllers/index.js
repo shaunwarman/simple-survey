@@ -17,7 +17,15 @@ router.get('/admin', function (req, res) {
         res.redirect('/unauthorized');
         return;
     }
-    res.render('master');
+    if (req.query) {
+        var success = req.query.success;
+        var message = req.query.message;
+        
+        res.render('master', { success: success, message: message });
+    } else {
+        res.render('master');
+    }
+    
 });
 
 router.get('/question/add', function (req, res) {
@@ -25,10 +33,7 @@ router.get('/question/add', function (req, res) {
         res.redirect('/unauthorized');
         return;
     }
-    res.send({ 
-        success: true, 
-        message : '' 
-    });
+    res.render('question');
 });
 
 router.post('/question/add', function (req, res) {
@@ -39,7 +44,7 @@ router.post('/question/add', function (req, res) {
     
     var question_id = uuid.v4();
     var question = req.body.question;
-    var options = req.body.options;
+    var options = req.body.options.split(",");
     
     sequelizer.Questions.create({
         id: question_id,
@@ -49,7 +54,7 @@ router.post('/question/add', function (req, res) {
         /**
          * Iterate over options array and save to db
          *
-         * @param options the options
+         * @param options the answer options
          */
         async.each(options, function (option, callback) {
             var answer_id = uuid.v4();
@@ -58,14 +63,11 @@ router.post('/question/add', function (req, res) {
                 id: answer_id,
                 question_id: question_id,
                 option: option,
-                order: order,
                 count: 0
                 
-            }).then(function () {
+            }).then(function (result) {
                 return callback(null, { success: true });
             });
-            
-            callback(null, { success: true });
         },
             
         /**
@@ -91,7 +93,21 @@ router.post('/question/add', function (req, res) {
 });
 
 router.get('/question/view', function (req, res) {
-    res.render('question');
+    sequelizer.Questions.findAll({}).then(function (questions) {
+        var question_id = questions[0].dataValues.id;
+        var question = questions[0].dataValues.question;
+        
+        sequelizer.Answers.findAll({
+            where: {
+                question_id: question_id
+            }
+        }).then(function (options) {
+            var options = options;
+
+            res.render('question', { question: question, options: options });
+        }).bind(question);
+    });
+    
 });
 
 router.get('/question/viewall', function (req, res) {
@@ -105,6 +121,7 @@ router.get('/question/viewall', function (req, res) {
 router.get('/unauthorized', function (req, res) {
    res.render('unauthorized'); 
 });
+
 
 router.post('/user', function (req, res) {
     if (req.body.username === "admin") {
@@ -124,16 +141,24 @@ router.post('/user', function (req, res) {
         
     } else {
         
-        login.handleUser(req, function (response) {
-            if (response.success === false) {
+        login.handleUser(req, function (error, response) {
+            if (response && response.success === false) {
                 res.status(404).send({ error: 'Error entering username and password' });
                 return;
             }
-            res.redirect('/vote');
+            res.redirect('/question/view');
         });
         
     }
 });
 
+router.post('/vote', function (req, res) {
+    var question = req.body.question;
+    var answer = req.body.answer;
+    
+    
+    
+    res.render('congrats');
+});
 
 module.exports = router;
